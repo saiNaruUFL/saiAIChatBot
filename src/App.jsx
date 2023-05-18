@@ -7,8 +7,6 @@ import {MainContainer,ChatContainer,MessageList,Message,MessageInput,TypingIndic
 import {PERSONALITY} from './person.js'
 import cors from 'cors';
 
-const API_KEY ="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";
-
 function App() {
   const [typing,setTyping] = useState(false);
   const [messages, setMessages] = useState([
@@ -62,7 +60,7 @@ function App() {
     await fetch("https://api.openai.com/v1/chat/completions",{
     method: "POST",
     headers: {
-      "Authorization": "Bearer " + API_KEY,
+      "Authorization": "Bearer " + import.meta.env.VITE_REACT_APP_API_KEY,
       "Content-Type" : "application/json"
     },
     body: JSON.stringify(apiRequestBody)
